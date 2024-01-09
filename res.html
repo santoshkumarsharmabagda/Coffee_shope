@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Copy Shope</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <style>
+    @media only screen and (max-width: 600px) {
+ #des{
+    display: none;
+ }
+ #mob{
+    display: block !important;
+ }
+}
+
+
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap");
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  -webkit-text-size-adjust: 100%;
+  font-variant-ligatures: none;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 100%;
+  font-family: "Fira Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  color: #1f1d42;
+  background-color: #f0f8e1;
+} */
+
+.card-hover {
+  width: 360px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 32px -10px rgba(0, 0, 0, 0.08);
+}
+.card-hover:has(.card-hover__link:hover) .card-hover__extra {
+  transform: translateY(0);
+  transition: transform 0.35s;
+}
+.card-hover:hover .card-hover__content {
+  background-color: #dee8c2;
+  bottom: 100%;
+  transform: translateY(100%);
+  padding: 50px 60px;
+  transition: all 0.35s cubic-bezier(0.1, 0.72, 0.4, 0.97);
+}
+.card-hover:hover .card-hover__link {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  transition: all 0.3s 0.35s cubic-bezier(0.1, 0.72, 0.4, 0.97);
+}
+.card-hover:hover img {
+  transform: scale(1);
+  transition: 0.35s 0.1s transform cubic-bezier(0.1, 0.72, 0.4, 0.97);
+}
+.card-hover__content {
+  width: 100%;
+  text-align: center;
+  background-color: #86b971;
+  padding: 0 60px 50px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(0);
+  transition: all 0.35s 0.35s cubic-bezier(0.1, 0.72, 0.4, 0.97);
+  will-change: bottom, background-color, transform, padding;
+  z-index: 1;
+}
+.card-hover__content::before, .card-hover__content::after {
+  content: "";
+  width: 100%;
+  height: 120px;
+  background-color: inherit;
+  position: absolute;
+  left: 0;
+  z-index: -1;
+}
+.card-hover__content::before {
+  top: -80px;
+  -webkit-clip-path: ellipse(60% 80px at bottom center);
+          clip-path: ellipse(60% 80px at bottom center);
+}
+.card-hover__content::after {
+  bottom: -80px;
+  -webkit-clip-path: ellipse(60% 80px at top center);
+          clip-path: ellipse(60% 80px at top center);
+}
+.card-hover__title {
+  font-size: 1.5rem;
+  margin-bottom: 1em;
+}
+.card-hover__title span {
+  color: #2d7f0b;
+}
+.card-hover__text {
+  font-size: 0.75rem;
+}
+.card-hover__link {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-decoration: none;
+  color: #2d7f0b;
+  opacity: 0;
+  padding: 10px;
+  transition: all 0.35s;
+}
+.card-hover__link:hover svg {
+  transform: translateX(4px);
+}
+.card-hover__link svg {
+  width: 18px;
+  margin-left: 4px;
+  transition: transform 0.3s;
+}
+.card-hover__extra {
+  height: 50%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: #86b971;
+  padding: 80px;
+  bottom: 0;
+  z-index: 0;
+  color: #dee8c2;
+  transform: translateY(100%);
+  will-change: transform;
+  transition: transform 0.35s;
+}
+.card-hover__extra span {
+  color: #2d7f0b;
+}
+.card-hover img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  z-index: -1;
+  transform: scale(1.2);
+  transition: 0.35s 0.35s transform cubic-bezier(0.1, 0.72, 0.4, 0.97);
+}
+
+/* about ccs */
+* {
+  font-family: Nunito, sans-serif;
+}
+
+.text-blk {
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  line-height: 25px;
+}
+
+.responsive-container-block {
+  min-height: 75px;
+  height: fit-content;
+  width: 95%;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0px;
+  /* margin-right: auto; */
+  margin-bottom: 0px;
+  /* margin-left: auto; */
+  justify-content: flex-start;
+}
+
+.responsive-container-block.bigContainer {
+  padding-top: 10px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  background-image: url("https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/bb29.png");
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: cover;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: initial;
+  background-repeat-x: no-repeat;
+  background-repeat-y: no-repeat;
+}
+
+.responsive-container-block.Container {
+  max-width: 800px;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  margin-top: 150px;
+  margin-right: auto;
+  margin-bottom: 150px;
+  margin-left: auto;
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.text-blk.heading {
+  font-size: 36px;
+  line-height: 45px;
+  font-weight: 800;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 30px;
+  margin-left: 0px;
+}
+
+.text-blk.subHeading {
+  text-align: center;
+  font-size: 18px;
+  line-height: 26px;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 60px;
+  margin-left: 0px;
+}
+
+.socialIcon {
+  width: 33px;
+  height: 33px;
+}
+
+.social-icons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.social-icon {
+  margin: 0 50px 0 50px;
+}
+
+.social-icon:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .text-blk.heading {
+    font-size: 55px;
+    line-height: 65px;
+  }
+
+  .text-blk.subHeading {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .socialIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .text-blk.subHeading {
+    line-height: 27px;
+  }
+
+  .text-blk.heading {
+    font-size: 32px;
+    line-height: 40px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+  }
+
+  .social-icon {
+    margin: 0 25px 0 25px;
+  }
+}
+
+@media (max-width: 500px) {
+  .responsive-container-block.bigContainer {
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+  }
+
+  .text-blk.heading {
+    font-size: 45px;
+    line-height: 55px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+  }
+
+  .text-blk.subHeading {
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 30px;
+    margin-left: 0px;
+  }
+
+  .social-icons-container {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text-blk.subHeading {
+    font-size: 16px;
+    line-height: 23px;
+  }
+
+  .text-blk.heading {
+    font-size: 26px;
+    line-height: 30px;
+  }
+
+  .social-icon {
+    margin: 0 20px 0 20px;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+  </style>
+  </head>
+  <body class="example" >
+    <!-- Destope Navebar -->
+    <div id="des">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+                <img src="logo.avif" alt="copy" style="height: 80px;width: 80px;border-radius: 50%;" >
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#about">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Contact</a>
+                  </li>
+                 
+                  
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+    </div>
+    <!-- Mobaile NavBar -->
+    <div id="mob" style="display: none;">
+        
+          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            Button with data-bs-target
+          </button>
+          
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <div>
+                Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+              </div>
+              <div class="dropdown mt-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                  Dropdown button
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div class="example" style="height: 87vh;overflow-y: scroll;" >
+        <!-- Home -->
+    <div class="container" id="home" >
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-3 ">
+                <div class="card-hover">
+                    <div class="card-hover__content">
+                      <h3 class="card-hover__title">
+                        Make your <span>choice</span> right now!
+                      </h3>
+                      <p class="card-hover__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia quisquam doloremque nostrum laboriosam, blanditiis libero corporis nulla a aut?</p>
+                      <a href="#" class="card-hover__link">
+                        <span>Learn How</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>        
+                      </a>
+                    </div>
+                    <div class="card-hover__extra">
+                      <h4>Learn <span>now</span> and get <span>40%</span> discount!</h4>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=60" alt="">
+                  </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-3 ">
+                <div class="card-hover">
+                    <div class="card-hover__content">
+                      <h3 class="card-hover__title">
+                        Make your <span>choice</span> right now!
+                      </h3>
+                      <p class="card-hover__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia quisquam doloremque nostrum laboriosam, blanditiis libero corporis nulla a aut?</p>
+                      <a href="#" class="card-hover__link">
+                        <span>Learn How</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>        
+                      </a>
+                    </div>
+                    <div class="card-hover__extra">
+                      <h4>Learn <span>now</span> and get <span>40%</span> discount!</h4>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=60" alt="">
+                  </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-3 ">
+                <div class="card-hover">
+                    <div class="card-hover__content">
+                      <h3 class="card-hover__title">
+                        Make your <span>choice</span> right now!
+                      </h3>
+                      <p class="card-hover__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia quisquam doloremque nostrum laboriosam, blanditiis libero corporis nulla a aut?</p>
+                      <a href="#" class="card-hover__link">
+                        <span>Learn How</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>        
+                      </a>
+                    </div>
+                    <div class="card-hover__extra">
+                      <h4>Learn <span>now</span> and get <span>40%</span> discount!</h4>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=60" alt="">
+                  </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-3 ">
+                <div class="card-hover">
+                    <div class="card-hover__content">
+                      <h3 class="card-hover__title">
+                        Make your <span>choice</span> right now!
+                      </h3>
+                      <p class="card-hover__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia quisquam doloremque nostrum laboriosam, blanditiis libero corporis nulla a aut?</p>
+                      <a href="#" class="card-hover__link">
+                        <span>Learn How</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>        
+                      </a>
+                    </div>
+                    <div class="card-hover__extra">
+                      <h4>Learn <span>now</span> and get <span>40%</span> discount!</h4>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=60" alt="">
+                  </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-3 ">
+                <div class="card-hover">
+                    <div class="card-hover__content">
+                      <h3 class="card-hover__title">
+                        Make your <span>choice</span> right now!
+                      </h3>
+                      <p class="card-hover__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia quisquam doloremque nostrum laboriosam, blanditiis libero corporis nulla a aut?</p>
+                      <a href="#" class="card-hover__link">
+                        <span>Learn How</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>        
+                      </a>
+                    </div>
+                    <div class="card-hover__extra">
+                      <h4>Learn <span>now</span> and get <span>40%</span> discount!</h4>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=60" alt="">
+                  </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mt-3 ">
+                <div class="card-hover">
+                    <div class="card-hover__content">
+                      <h3 class="card-hover__title">
+                        Make your <span>choice</span> right now!
+                      </h3>
+                      <p class="card-hover__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia quisquam doloremque nostrum laboriosam, blanditiis libero corporis nulla a aut?</p>
+                      <a href="#" class="card-hover__link">
+                        <span>Learn How</span>
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>        
+                      </a>
+                    </div>
+                    <div class="card-hover__extra">
+                      <h4>Learn <span>now</span> and get <span>40%</span> discount!</h4>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=60" alt="">
+                  </div>
+            </div>
+        </div>
+    </div>
+    <!-- About -->
+    <div class="container mt-5 " id="about" >
+        <div>
+            <div class="responsive-container-block bigContainer">
+                <div class="responsive-container-block Container">
+                  <p class="text-blk heading">
+                    About Us
+                  </p>
+                  <p class="text-blk subHeading">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                  </p>
+                  <div class="social-icons-container">
+                    <a class="social-icon">
+                      <img class="socialIcon image-block" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/bb33.png">
+                    </a>
+                    <a class="social-icon">
+                      <img class="socialIcon image-block" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/bb34.png">
+                    </a>
+                    <a class="social-icon">
+                      <img class="socialIcon image-block" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/bb35.png">
+                    </a>
+                    <a class="social-icon">
+                      <img class="socialIcon image-block" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/bb36.png">
+                    </a>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+    </div>
+    <!-- Contact -->
+    <div class="container" ></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  </body>
+</html>
